@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+    font-family: 'Inter', 'Arial Black', sans-serif;
+  }
+
+  .og {
+    width: 1200px;
+    height: 630px;
+    background:
+      radial-gradient(ellipse at 20% 0%, #1a2639 0%, transparent 55%),
+      radial-gradient(ellipse at 100% 100%, #2a1810 0%, transparent 50%),
+      linear-gradient(135deg, #182028 0%, #0f1419 45%, #07090c 100%);
+    display: flex;
+    align-items: center;
+    padding: 0 70px;
+    box-sizing: border-box;
+    position: relative;
+    gap: 60px;
+    overflow: hidden;
+  }
+
+  /* Декоративные «фишки» на фоне */
+  .og::before,
+  .og::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    border: 2px dashed rgba(255, 205, 0, 0.12);
+    pointer-events: none;
+  }
+  .og::before {
+    width: 560px;
+    height: 560px;
+    right: -220px;
+    top: -180px;
+  }
+  .og::after {
+    width: 340px;
+    height: 340px;
+    right: -80px;
+    bottom: -160px;
+    border-style: solid;
+    border-color: rgba(255, 205, 0, 0.06);
+  }
+
+  /* Иконка */
+  .og-icon {
+    width: 380px;
+    height: 380px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .og-icon img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.55));
+  }
+
+  .og-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    min-width: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Заголовок с обводкой */
+  .og-title {
+    position: relative;
+    font-size: 66px;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -1.5px;
+    white-space: nowrap;
+    margin: 0;
+    padding: 0;
+  }
+  .og-title::before {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    color: #0f1419;
+    -webkit-text-stroke: 12px #0f1419;
+    paint-order: stroke fill;
+    z-index: 0;
+    letter-spacing: inherit;
+  }
+  .og-title span {
+    position: relative;
+    z-index: 1;
+    color: #ffffff;
+  }
+  .og-title .accent {
+    color: #ffcd00;
+  }
+
+  /* Подзаголовок */
+  .og-sub {
+    font-size: 25px;
+    font-weight: 500;
+    color: #b8c5d6;
+    margin: 0;
+    line-height: 1.35;
+    letter-spacing: 0.2px;
+    max-width: 620px;
+  }
+
+  /* Теги-пилюли под стиль сайта */
+  .og-tags {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 8px;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .og-tags span {
+    padding: 7px 14px;
+    border-radius: 60px;
+    background: rgba(255, 205, 0, 0.10);
+    color: #ffcd00;
+    border: 1px solid rgba(255, 205, 0, 0.35);
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  /* Нижняя акцентная полоса */
+  .og-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: linear-gradient(90deg, #ffcd00 0%, #e6b800 100%);
+    z-index: 2;
+  }
+</style>
+</head>
+<body>
+  <div class="og">
+    <div class="og-icon">
+      <img src="favicon.svg" alt="">
+    </div>
+    <div class="og-text">
+      <h1 class="og-title" data-text="CapsGame Gallery">
+        <span>CapsGame <span class="accent">Gallery</span></span>
+      </h1>
+      <p class="og-sub">Просмотр фишек всех коллекций игры CapsGame в одном месте</p>
+      <div class="og-tags">
+        <span>📀 Common</span>
+        <span>✨ Special</span>
+        <span>🎉 Event</span>
+        <span>👥 Community</span>
+        <span>💎 Premium</span>
+      </div>
+    </div>
+    <div class="og-bar"></div>
+  </div>
+</body>
+</html>
