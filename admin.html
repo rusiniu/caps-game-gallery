@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin — Caps Gallery Enrichment</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f1419;
+            --bg-card: #1e2228;
+            --bg-elevated: #1a2027;
+            --text: #e8edf2;
+            --text-muted: #8a99ad;
+            --text-dim: #5f6d80;
+            --border: rgba(255,255,255,0.08);
+            --border-strong: rgba(255,255,255,0.14);
+            --accent: #ffcd00;
+            --accent-dark: #e6b800;
+            --success: #4ade80;
+            --danger: #ff6b66;
+            --warning: #ffcd00;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { color-scheme: dark; }
+        body {
+            background: radial-gradient(ellipse at top, #182028 0%, #0b1014 60%, #07090c 100%);
+            background-attachment: fixed;
+            color: var(--text);
+            font-family: 'Inter', system-ui, sans-serif;
+            min-height: 100vh;
+            padding: 24px;
+        }
+        .wrap { max-width: 1400px; margin: 0 auto; }
+
+        .head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .head h1 {
+            font-size: 1.4rem;
+            font-weight: 800;
+        }
+        .head h1 i { color: var(--accent); margin-right: 8px; }
+
+        .toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 12px 16px;
+        }
+        .toolbar input[type="search"] {
+            flex: 1;
+            min-width: 200px;
+            padding: 10px 16px;
+            border-radius: 60px;
+            border: 1px solid var(--border-strong);
+            background: var(--bg-elevated);
+            color: var(--text);
+            font-family: inherit;
+            font-size: 0.9rem;
+        }
+        .toolbar input[type="search"]:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(255,205,0,0.18);
+        }
+        .btn {
+            padding: 10px 18px;
+            border-radius: 60px;
+            border: 1px solid var(--border-strong);
+            background: rgba(255,255,255,0.06);
+            color: var(--text);
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .btn:hover { background: rgba(255,255,255,0.12); }
+        .btn-primary {
+            background: var(--accent);
+            color: #0f1419;
+            border-color: var(--accent);
+        }
+        .btn-primary:hover { background: var(--accent-dark); }
+        .btn-danger { color: var(--danger); }
+        .btn-danger:hover { background: rgba(255,71,64,0.15); }
+
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 16px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        .stats span strong { color: var(--accent); }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            font-size: 0.85rem;
+        }
+        thead th {
+            text-align: left;
+            padding: 12px 14px;
+            background: var(--bg-elevated);
+            color: var(--text-muted);
+            font-weight: 700;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+        tbody td {
+            padding: 8px 14px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: middle;
+        }
+        tbody tr:last-child td { border-bottom: none; }
+        tbody tr:hover { background: rgba(255,255,255,0.02); }
+        tbody tr.filled td { background: rgba(74,222,128,0.03); }
+        tbody tr.empty td.id-cell { color: var(--text-muted); }
+
+        .id-cell { font-family: 'Inter', monospace; font-size: 0.78rem; color: var(--text-dim); }
+        .title-cell { font-weight: 600; }
+        .type-badge {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+
+        input[type="number"], input[type="date"], input[type="text"] {
+            width: 100%;
+            padding: 7px 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--bg-elevated);
+            color: var(--text);
+            font-family: inherit;
+            font-size: 0.85rem;
+        }
+        input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(255,205,0,0.18);
+        }
+        input::placeholder { color: var(--text-dim); }
+
+        .size-cell {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .size-badge {
+            font-size: 0.65rem;
+            padding: 1px 8px;
+            border-radius: 30px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+        .size-badge.probe { background: rgba(138,153,173,0.15); color: var(--text-muted); }
+        .size-badge.manual { background: rgba(255,205,0,0.15); color: var(--accent); }
+
+        .flash {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%) translateY(80px);
+            background: var(--success);
+            color: #0f1419;
+            padding: 12px 24px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            box-shadow: 0 12px 24px -8px rgba(0,0,0,0.6);
+            transition: transform 0.3s;
+            z-index: 100;
+        }
+        .flash.show { transform: translateX(-50%) translateY(0); }
+        .flash.error { background: var(--danger); color: #fff; }
+
+        .empty-message {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="head">
+        <h1><i class="bi bi-sliders"></i> Enrichment Editor</h1>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <button class="btn" id="btnImport"><i class="bi bi-upload"></i> Импорт JSON</button>
+            <button class="btn btn-primary" id="btnExport"><i class="bi bi-download"></i> Экспорт enrichment.json</button>
+            <button class="btn btn-danger" id="btnReset"><i class="bi bi-arrow-counterclockwise"></i> Сбросить</button>
+        </div>
+    </div>
+
+    <div class="toolbar">
+        <input type="search" id="searchInput" placeholder="🔍 Поиск по названию или id…">
+        <select id="filterSelect" style="padding:10px 16px;border-radius:60px;border:1px solid var(--border-strong);background:var(--bg-elevated);color:var(--text);font-family:inherit;font-size:0.85rem;">
+            <option value="all">Все</option>
+            <option value="filled">Заполненные</option>
+            <option value="empty">Пустые</option>
+        </select>
+    </div>
+
+    <div class="stats" id="stats"></div>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width:14%;">ID</th>
+                <th style="width:24%;">Название</th>
+                <th style="width:10%;">Тип</th>
+                <th style="width:13%;">Size</th>
+                <th style="width:13%;">Supply (тираж)</th>
+                <th style="width:16%;">ReleasedAt</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+    </table>
+</div>
+
+<div class="flash" id="flash"></div>
+
+<script src="data/collections.js"></script>
+<script>
+(function() {
+    const TYPE_LABELS = {
+        common:    { label: 'Common',    emoji: '📀', color: '#94a3b8', bg: 'rgba(148,163,184,0.16)' },
+        special:   { label: 'Special',   emoji: '✨', color: '#4ade80', bg: 'rgba(74,222,128,0.16)' },
+        event:     { label: 'Event',     emoji: '🎉', color: '#93b4ff', bg: 'rgba(84,129,255,0.16)' },
+        community: { label: 'Community', emoji: '👥', color: '#e384d6', bg: 'rgba(180,39,165,0.16)' },
+        premium:   { label: 'Premium',   emoji: '💎', color: '#ffcd00', bg: 'rgba(255,205,0,0.16)' }
+    };
+
+    // Хранилище состояния: { id: { supply, releasedAt, size? } }
+    let state = {};
+    let allRows = [];
+
+    const tbody = document.getElementById('tableBody');
+    const statsEl = document.getElementById('stats');
+    const searchInput = document.getElementById('searchInput');
+    const filterSelect = document.getElementById('filterSelect');
+    const flashEl = document.getElementById('flash');
+
+    function flash(msg, isError) {
+        flashEl.textContent = msg;
+        flashEl.classList.toggle('error', !!isError);
+        flashEl.classList.add('show');
+        clearTimeout(flash._t);
+        flash._t = setTimeout(() => flashEl.classList.remove('show'), 2200);
+    }
+
+    function escapeHtml(s) {
+        return String(s ?? '').replace(/[&<>"]/g, m =>
+            m === '&' ? '&amp;' : m === '<' ? '&lt;' : m === '>' ? '&gt;' : '&quot;'
+        );
+    }
+
+    function loadData() {
+        const data = window.CAPS_DATA;
+        if (!data || !Array.isArray(data.collections)) {
+            document.body.innerHTML = '<div class="empty-message">window.CAPS_DATA не загружен. Проверь data/collections.js</div>';
+            return [];
+        }
+        return data.collections.slice().sort((a, b) =>
+            a.id.localeCompare(b.id, 'en', { sensitivity: 'base' })
+        );
+    }
+
+    function buildInitialState(collections) {
+        // Если в снапшоте есть supply/releasedAt (уже обогащённые) — подхватываем.
+        // Size в state НЕ кладём, если он probe — иначе мы его «закрепим» неявно.
+        // Поле size редактируем только когда пользователь явно вводит значение.
+        const s = {};
+        collections.forEach(c => {
+            const entry = {};
+            if (c.supply !== null && c.supply !== undefined) entry.supply = c.supply;
+            if (c.releasedAt) entry.releasedAt = c.releasedAt;
+            if (c.sizeSource === 'manual' && c.size !== null) entry.size = c.size;
+            if (Object.keys(entry).length) s[c.id] = entry;
+        });
+        return s;
+    }
+
+    function render() {
+        const q = searchInput.value.trim().toLowerCase();
+        const filter = filterSelect.value;
+
+        const filtered = allRows.filter(col => {
+            const enr = state[col.id] || {};
+            const hasAny = enr.supply !== undefined || enr.releasedAt !== undefined || enr.size !== undefined;
+            if (filter === 'filled' && !hasAny) return false;
+            if (filter === 'empty' && hasAny) return false;
+            if (q) {
+                const hay = (col.id + ' ' + col.title).toLowerCase();
+                if (!hay.includes(q)) return false;
+            }
+            return true;
+        });
+
+        tbody.innerHTML = filtered.map(col => {
+            const enr = state[col.id] || {};
+            const typeInfo = TYPE_LABELS[col.type] || { label: col.type, emoji: '🎴', color: '#64748b', bg: 'rgba(100,116,139,0.16)' };
+            const isFilled = enr.supply !== undefined || enr.releasedAt !== undefined || enr.size !== undefined;
+
+            // size: если в enrichment есть size — ручной, иначе probe (или null)
+            const manualSize = enr.size;
+            const effectiveSize = manualSize !== undefined ? manualSize : col.size;
+            const sizeSource = manualSize !== undefined ? 'manual' : (col.sizeSource || 'unknown');
+
+            return `
+                <tr class="${isFilled ? 'filled' : 'empty'}">
+                    <td class="id-cell">${escapeHtml(col.id)}</td>
+                    <td class="title-cell">${escapeHtml(col.title)}</td>
+                    <td>
+                        <span class="type-badge" style="background:${typeInfo.bg}; color:${typeInfo.color};">
+                            ${typeInfo.emoji} ${typeInfo.label}
+                        </span>
+                    </td>
+                    <td>
+                        <div class="size-cell">
+                            <input type="number" min="0" step="3" placeholder="${col.size ?? '?'}"
+                                data-id="${escapeHtml(col.id)}" data-field="size"
+                                value="${manualSize !== undefined ? manualSize : ''}">
+                            <span class="size-badge ${sizeSource}">${sizeSource === 'manual' ? 'ручной' : sizeSource === 'probe' ? 'probe' : '?'}</span>
+                        </div>
+                    </td>
+                    <td>
+                        <input type="number" min="0" placeholder="—"
+                            data-id="${escapeHtml(col.id)}" data-field="supply"
+                            value="${enr.supply ?? ''}">
+                    </td>
+                    <td>
+                        <input type="date"
+                            data-id="${escapeHtml(col.id)}" data-field="releasedAt"
+                            value="${escapeHtml(enr.releasedAt || '')}">
+                    </td>
+                </tr>
+            `;
+        }).join('');
+
+        // Вешаем обработчики на inputs
+        tbody.querySelectorAll('input').forEach(inp => {
+            inp.addEventListener('change', onInputChange);
+        });
+
+        // Статистика
+        const total = allRows.length;
+        const filledCount = allRows.filter(col => {
+            const e = state[col.id] || {};
+            return e.supply !== undefined || e.releasedAt !== undefined || e.size !== undefined;
+        }).length;
+        const withSupply = allRows.filter(col => (state[col.id] || {}).supply !== undefined).length;
+        const withRelease = allRows.filter(col => (state[col.id] || {}).releasedAt).length;
+
+        statsEl.innerHTML = `
+            <span>Всего: <strong>${total}</strong></span>
+            <span>Заполнено: <strong>${filledCount}</strong></span>
+            <span>С тиражом: <strong>${withSupply}</strong></span>
+            <span>С датой релиза: <strong>${withRelease}</strong></span>
+        `;
+    }
+
+    function onInputChange(e) {
+        const inp = e.target;
+        const id = inp.dataset.id;
+        const field = inp.dataset.field;
+        const raw = inp.value.trim();
+
+        if (!state[id]) state[id] = {};
+
+        if (raw === '') {
+            delete state[id][field];
+        } else if (field === 'size' || field === 'supply') {
+            const n = parseInt(raw, 10);
+            if (isNaN(n) || n < 0) {
+                flash('Некорректное число', true);
+                return;
+            }
+            state[id][field] = n;
+        } else {
+            state[id][field] = raw;
+        }
+
+        // Чистим пустые записи
+        if (Object.keys(state[id]).length === 0) delete state[id];
+
+        // Перерисовываем только бейдж размера и класс строки — без полного re-render,
+        // чтобы не терять фокус в других полях
+        const row = inp.closest('tr');
+        if (row) {
+            const enr = state[id] || {};
+            const isFilled = enr.supply !== undefined || enr.releasedAt !== undefined || enr.size !== undefined;
+            row.classList.toggle('filled', isFilled);
+            row.classList.toggle('empty', !isFilled);
+
+            if (field === 'size') {
+                const badge = row.querySelector('.size-badge');
+                if (badge) {
+                    if (enr.size !== undefined) {
+                        badge.className = 'size-badge manual';
+                        badge.textContent = 'ручной';
+                    } else {
+                        const col = allRows.find(c => c.id === id);
+                        const src = col?.sizeSource || 'unknown';
+                        badge.className = 'size-badge ' + src;
+                        badge.textContent = src === 'probe' ? 'probe' : '?';
+                    }
+                }
+            }
+        }
+
+        // Обновляем статистику
+        const total = allRows.length;
+        const filledCount = allRows.filter(col => {
+            const e = state[col.id] || {};
+            return e.supply !== undefined || e.releasedAt !== undefined || e.size !== undefined;
+        }).length;
+        const withSupply = allRows.filter(col => (state[col.id] || {}).supply !== undefined).length;
+        const withRelease = allRows.filter(col => (state[col.id] || {}).releasedAt).length;
+        statsEl.innerHTML = `
+            <span>Всего: <strong>${total}</strong></span>
+            <span>Заполнено: <strong>${filledCount}</strong></span>
+            <span>С тиражом: <strong>${withSupply}</strong></span>
+            <span>С датой релиза: <strong>${withRelease}</strong></span>
+        `;
+    }
+
+    // ---------- Экспорт ----------
+    document.getElementById('btnExport').addEventListener('click', () => {
+        // Сортируем ключи для стабильного diff в git
+        const sorted = {};
+        Object.keys(state).sort().forEach(k => { sorted[k] = state[k]; });
+
+        const json = JSON.stringify(sorted, null, 2);
+        const blob = new Blob([json], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'enrichment.json';
+        a.click();
+        URL.revokeObjectURL(url);
+        flash('Экспортировано: ' + Object.keys(sorted).length + ' записей');
+    });
+
+    // ---------- Импорт ----------
+    document.getElementById('btnImport').addEventListener('click', () => {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = '.json,application/json';
+        input.onchange = async (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            try {
+                const text = await file.text();
+                const parsed = JSON.parse(text);
+                if (typeof parsed !== 'object' || Array.isArray(parsed)) {
+                    throw new Error('Ожидался объект');
+                }
+                state = parsed;
+                render();
+                flash('Импортировано: ' + Object.keys(parsed).length + ' записей');
+            } catch (err) {
+                flash('Ошибка импорта: ' + err.message, true);
+            }
+        };
+        input.click();
+    });
+
+    // ---------- Сброс ----------
+    document.getElementById('btnReset').addEventListener('click', () => {
+        if (!confirm('Сбросить все изменения? Несохранённые правки будут потеряны.')) return;
+        state = buildInitialState(allRows);
+        render();
+        flash('Сброшено к состоянию снапшота');
+    });
+
+    // ---------- Фильтры ----------
+    searchInput.addEventListener('input', render);
+    filterSelect.addEventListener('change', render);
+
+    // ---------- Init ----------
+    allRows = loadData();
+    state = buildInitialState(allRows);
+    render();
+
+    // Предупреждение при закрытии, если есть несохранённые изменения
+    let initialSerialized = JSON.stringify(state);
+    window.addEventListener('beforeunload', (e) => {
+        if (JSON.stringify(state) !== initialSerialized) {
+            e.preventDefault();
+            e.returnValue = '';
+        }
+    });
+})();
+</script>
+</body>
+</html>
