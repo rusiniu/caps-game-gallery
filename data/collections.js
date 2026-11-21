@@ -1,5 +1,5 @@
 window.CAPS_DATA = {
-  "generatedAt": "2026-11-21T19:37:42Z",
+  "generatedAt": "2026-11-21T19:38:44Z",
   "count": 85,
   "collections": [
     {
