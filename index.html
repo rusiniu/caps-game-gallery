@@ -43,7 +43,14 @@
     <div class="collection-mini-grid" id="collectionMiniGrid" style="display: none;"></div>
 
     <div class="site-footer" id="siteFooter">
-        <i class="bi bi-cloud-check"></i> Загрузка данных…
+        <div class="footer-line" id="footerMeta">
+            <i class="bi bi-cloud-check"></i> Загрузка данных…
+        </div>
+        <div class="footer-links">
+            <a href="https://t.me/CapsTradeBot" target="_blank" rel="noopener" class="footer-link" title="API предоставлен @CapsTradeBot">
+                <i class="bi bi-telegram"></i> Благодарим @CapsTradeBot за предоставленные данные
+            </a>
+        </div>
     </div>
 </div>
 
@@ -232,9 +239,18 @@
         modalEl.classList.add('open');
         document.body.classList.add('modal-open');
         modalBody.scrollTop = 0;
+
+        // Обновляем хеш, чтобы URL отражал открытую коллекцию
+        if (location.hash !== '#' + collectionId) {
+            history.replaceState(null, '', '#' + collectionId);
+        }
     }
 
     function closeModal() {
+        if (location.hash) {
+            history.replaceState(null, '', location.pathname + location.search);
+        }
+
         modalEl.classList.remove('open');
         document.body.classList.remove('modal-open');
         if (lastFocusedCard) {
@@ -253,7 +269,7 @@
 
     // ---------- Футер ----------
     function renderFooter() {
-        const footer = document.getElementById('siteFooter');
+        const metaEl = document.getElementById('footerMeta');
         const meta = getSnapshotMeta();
         if (meta.generatedAt) {
             const d = new Date(meta.generatedAt);
@@ -262,10 +278,10 @@
                 : d.toLocaleString('ru-RU', {
                     day: 'numeric', month: 'long', year: 'numeric',
                     hour: '2-digit', minute: '2-digit'
-                  });
-            footer.innerHTML = `<i class="bi bi-cloud-check"></i> Данные от ${formatted} · коллекций: ${meta.count}`;
+                });
+            metaEl.innerHTML = `<i class="bi bi-cloud-check"></i> Данные от ${formatted} · коллекций: ${meta.count}`;
         } else {
-            footer.innerHTML = `<i class="bi bi-cloud-check"></i> Данные из игры CapsGame`;
+            metaEl.innerHTML = `<i class="bi bi-cloud-check"></i> Данные из игры CapsGame`;
         }
     }
 
@@ -281,7 +297,28 @@
         renderTabs();
         renderMiniGrid();
         renderFooter();
+
+        // Открываем коллекцию по якорю, если он есть
+        const hash = location.hash.replace('#', '');
+        if (hash) {
+            const col = collectionsList.find(c => c.id === hash);
+            if (col) {
+                // Небольшая задержка, чтобы DOM успел отрисоваться
+                setTimeout(() => openModal(hash), 0);
+            }
+        }
     }
+
+    window.addEventListener('hashchange', () => {
+        const hash = location.hash.replace('#', '');
+        if (hash) {
+            const col = collectionsList.find(c => c.id === hash);
+            if (col) openModal(hash);
+            else closeModal();
+        } else {
+            closeModal();
+        }
+    });
 
     init();
 })();
