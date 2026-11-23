@@ -1,242 +1,432 @@
 {
   "90s": {
-    "supply": 175000
+    "supply": 175000,
+    "size": 9,
+    "releasedAt": "2024-10-01T17:00:00Z"
   },
   "90sgirls": {
-    "supply": 400000
+    "supply": 400000,
+    "size": 9,
+    "releasedAt": "2025-07-30T17:00:00Z"
   },
   "adventurecaps": {
-    "supply": 400000
+    "supply": 400000,
+    "size": 9,
+    "releasedAt": "2026-02-25T17:00:00Z"
   },
   "ashesofglory": {
-    "supply": 600000
+    "supply": 600000,
+    "size": 9,
+    "releasedAt": "2026-01-29T17:00:00Z"
   },
   "batonman": {
-    "supply": 175000
+    "supply": 175000,
+    "size": 9,
+    "releasedAt": "2024-09-03T17:00:00Z"
   },
   "beavisandgumhead": {
-    "supply": 1200000
+    "supply": 1200000,
+    "size": 6,
+    "releasedAt": "2026-01-24T17:00:00Z"
   },
   "bitonicle": {
-    "supply": 520000
+    "supply": 520000,
+    "size": 9,
+    "releasedAt": "2025-06-04T17:00:00Z"
   },
   "blockbusters": {
-    "supply": 50000
+    "supply": 50000,
+    "size": 12,
+    "releasedAt": "2025-08-17T17:00:00Z"
   },
   "capston": {
-    "supply": 108000
+    "supply": 108000,
+    "size": 10,
+    "releasedAt": "2024-09-03T17:00:00Z"
   },
   "capstonverse": {
-    "supply": 150000
+    "supply": 150000,
+    "size": 9,
+    "releasedAt": "2026-09-03T17:00:00Z"
   },
   "catopolis": {
-    "supply": 600000
+    "supply": 600000,
+    "size": 9,
+    "releasedAt": "2025-06-27T17:00:00Z"
   },
   "cheeton": {
-    "supply": 900000
+    "supply": 900000,
+    "size": 12,
+    "releasedAt": "2025-11-07T17:00:00Z"
+  },
+  "daolama": {
+    "size": 3,
+    "supply": 25000,
+    "releasedAt": "2025-05-07T17:00:00Z"
   },
   "daopeople": {
-    "supply": 25000
+    "supply": 25000,
+    "size": 3,
+    "releasedAt": "2025-01-19T17:00:00Z"
   },
   "duckygram": {
-    "supply": 42000
+    "supply": 42000,
+    "size": 6,
+    "releasedAt": "2025-02-10T17:00:00Z"
+  },
+  "durove": {
+    "size": 6,
+    "supply": 101084,
+    "releasedAt": "2025-03-16T17:00:00Z"
   },
   "fanton": {
-    "supply": 20000
+    "supply": 20000,
+    "size": 6,
+    "releasedAt": "2025-02-04T17:00:00Z"
+  },
+  "fullmetaljetton": {
+    "size": 3,
+    "supply": 5000,
+    "releasedAt": "2024-10-09T17:00:00Z"
   },
   "gardenofmyth": {
-    "supply": 700000
+    "supply": 700000,
+    "size": 9,
+    "releasedAt": "2025-10-10T17:00:00Z"
   },
   "gatto": {
-    "supply": 100000
+    "supply": 100000,
+    "size": 9,
+    "releasedAt": "2024-12-05T17:00:00Z"
   },
   "glitchypixel": {
-    "supply": 100000
+    "supply": 100000,
+    "size": 6,
+    "releasedAt": "2026-08-09T17:00:00Z"
   },
   "goodolddays": {
-    "supply": 50000
+    "supply": 50000,
+    "size": 6,
+    "releasedAt": "2026-11-12T17:00:00Z"
   },
   "gotoncity": {
-    "supply": 175000
+    "supply": 175000,
+    "size": 9,
+    "releasedAt": "2024-11-27T17:00:00Z"
   },
   "grinchton": {
-    "supply": 92000
+    "supply": 92025,
+    "size": 6,
+    "releasedAt": "2024-12-26T17:00:00Z"
   },
   "gumanoid": {
-    "supply": 250000
+    "supply": 250000,
+    "size": 9,
+    "releasedAt": "2025-04-27T17:00:00Z"
   },
   "hallowednight": {
-    "supply": 150000
+    "supply": 150000,
+    "size": 6,
+    "releasedAt": "2026-10-29T17:00:00Z"
   },
   "halloween": {
-    "supply": 66666
+    "supply": 66666,
+    "size": 12,
+    "releasedAt": "2024-10-27T17:00:00Z"
   },
   "happyfarmer": {
-    "supply": 25000
+    "supply": 25000,
+    "size": 3,
+    "releasedAt": "2025-01-19T17:00:00Z"
   },
   "helgassecret": {
-    "supply": 600000
+    "supply": 600000,
+    "size": 9,
+    "releasedAt": "2026-02-17T17:00:00Z"
   },
   "kaidzen": {
-    "supply": 2000
+    "supply": 1200,
+    "size": 3,
+    "releasedAt": "2024-09-09T17:00:00Z"
   },
   "kaidzen2": {
-    "supply": 1200
+    "supply": 2000,
+    "size": 3,
+    "releasedAt": "2025-04-21T17:00:00Z"
+  },
+  "kaidzen3": {
+    "size": 6,
+    "supply": 5000,
+    "releasedAt": "2026-11-22T17:00:00Z"
   },
   "kapuzya": {
-    "supply": 1200000
+    "supply": 1200000,
+    "size": 6,
+    "releasedAt": "2026-08-04T17:00:00Z"
   },
   "madcaps": {
-    "supply": 50000
+    "supply": 50000,
+    "size": 9,
+    "releasedAt": "2025-10-18T17:00:00Z"
   },
   "madnessland": {
-    "supply": 75000
+    "supply": 75000,
+    "size": 6,
+    "releasedAt": "2026-08-29T17:00:00Z"
   },
   "medievalcats": {
-    "supply": 15000
+    "supply": 15000,
+    "size": 6,
+    "releasedAt": "2025-10-03T17:00:00Z"
   },
   "memefurcap": {
-    "supply": 800000
+    "supply": 800000,
+    "size": 6,
+    "releasedAt": "2026-06-09T17:00:00Z"
   },
   "memhustle": {
-    "supply": 25000
+    "supply": 25000,
+    "size": 6,
+    "releasedAt": "2025-07-22T17:00:00Z"
   },
   "mickey": {
-    "supply": 300000
+    "supply": 300000,
+    "size": 9,
+    "releasedAt": "2025-07-16T17:00:00Z"
   },
   "mortalcaps": {
-    "supply": 690000
+    "supply": 690000,
+    "size": 12,
+    "releasedAt": "2025-09-01T17:00:00Z"
   },
   "naruton": {
-    "supply": 50000
+    "supply": 50000,
+    "size": 9,
+    "releasedAt": "2024-11-18T17:00:00Z"
   },
   "nationalcars": {
-    "supply": 50000
+    "supply": 50000,
+    "size": 9,
+    "releasedAt": "2026-02-25T17:00:00Z"
   },
   "needforton": {
-    "supply": 400000
+    "supply": 400000,
+    "size": 9,
+    "releasedAt": "2024-12-17T17:00:00Z"
   },
   "neondream": {
-    "supply": 100000
+    "supply": 100000,
+    "size": 6,
+    "releasedAt": "2026-02-14T17:00:00Z"
   },
   "ninjatonturtles": {
-    "supply": 345000
+    "supply": 345000,
+    "size": 12,
+    "releasedAt": "2024-09-03T17:00:00Z"
   },
   "noir": {
-    "supply": 50000
+    "supply": 50000,
+    "size": 6,
+    "releasedAt": "2026-07-26T17:00:00Z"
   },
   "notcoin": {
-    "supply": 60000
+    "supply": 60000,
+    "size": 6,
+    "releasedAt": "2024-10-29T17:00:00Z"
   },
   "notpunks": {
-    "supply": 25000
+    "supply": 25000,
+    "size": 3,
+    "releasedAt": "2025-06-03T17:00:00Z"
   },
   "nutsfarm": {
-    "supply": 25000
+    "supply": 25000,
+    "size": 6,
+    "releasedAt": "2025-08-17T17:00:00Z"
   },
   "onecapman": {
-    "supply": 600000
+    "supply": 600000,
+    "size": 9,
+    "releasedAt": "2026-06-08T00:00:00Z"
   },
   "pepe": {
-    "supply": 400000
+    "supply": 400000,
+    "size": 9,
+    "releasedAt": "2025-11-07T17:00:00Z"
   },
   "pixelnostalgia": {
-    "supply": 900000
+    "supply": 900000,
+    "size": 9,
+    "releasedAt": "2025-12-16T17:00:00Z"
   },
   "pocatontas": {
-    "supply": 690000
+    "supply": 690000,
+    "size": 9,
+    "releasedAt": "2024-09-03T17:00:00Z"
   },
   "powertongers": {
-    "supply": 345000
+    "supply": 345000,
+    "size": 9,
+    "releasedAt": "2024-09-03T17:00:00Z"
   },
   "puppetstreet": {
-    "supply": 600000
+    "supply": 600000,
+    "size": 6,
+    "releasedAt": "2026-08-24T17:00:00Z"
   },
   "rockermice": {
-    "supply": 600000
+    "supply": 600000,
+    "size": 9,
+    "releasedAt": "2026-09-26T17:00:00Z"
   },
   "sailorton": {
-    "supply": 175000
+    "supply": 175000,
+    "size": 12,
+    "releasedAt": "2024-09-03T17:00:00Z"
   },
   "seadogs": {
-    "supply": 100000
+    "supply": 100000,
+    "size": 9,
+    "releasedAt": "2026-10-09T17:00:00Z"
+  },
+  "simptons": {
+    "size": 15,
+    "supply": 690000,
+    "releasedAt": "2024-09-03T17:00:00Z"
   },
   "smokin": {
-    "supply": 900000
+    "supply": 900000,
+    "size": 9,
+    "releasedAt": "2026-09-12T17:00:00Z"
   },
   "streetfighton": {
-    "supply": 520000
+    "supply": 520000,
+    "size": 12,
+    "releasedAt": "2024-09-03T17:00:00Z"
   },
   "susuwatari": {
-    "supply": 300000
+    "supply": 300000,
+    "size": 6,
+    "releasedAt": "2026-10-31T17:00:00Z"
   },
   "tamatonchi": {
-    "supply": 50000
+    "supply": 50000,
+    "size": 6,
+    "releasedAt": "2026-01-19T17:00:00Z"
   },
   "thedailyton": {
-    "supply": 5000
+    "supply": 5000,
+    "size": 3,
+    "releasedAt": "2024-10-09T17:00:00Z"
   },
   "theend": {
-    "supply": 100000
+    "supply": 100000,
+    "size": 9,
+    "releasedAt": "2026-11-11T17:00:00Z"
   },
   "thefifthcap": {
-    "supply": 900000
+    "supply": 900000,
+    "size": 9,
+    "releasedAt": "2026-02-25T17:00:00Z"
   },
   "ton2k": {
-    "supply": 25000
+    "supply": 25000,
+    "size": 3,
+    "releasedAt": "2025-01-19T17:00:00Z"
   },
   "tonandjerry": {
-    "supply": 520000
+    "supply": 520000,
+    "size": 12,
+    "releasedAt": "2024-09-03T17:00:00Z"
   },
   "tonchucaps": {
-    "supply": 690000
+    "supply": 690000,
+    "size": 9,
+    "releasedAt": "2024-09-03T17:00:00Z"
   },
   "tonchurch": {
-    "supply": 7000
+    "supply": 7000,
+    "size": 3,
+    "releasedAt": "2024-11-26T17:00:00Z"
   },
   "tondersurprise": {
-    "supply": 400000
+    "supply": 400000,
+    "size": 9,
+    "releasedAt": "2025-02-10T17:00:00Z"
   },
   "tonfestival": {
-    "supply": 20000
+    "supply": 20000,
+    "size": 6,
+    "releasedAt": "2025-03-17T17:00:00Z"
   },
   "tonis": {
-    "supply": 100000
+    "supply": 100000,
+    "size": 6,
+    "releasedAt": "2025-02-13T17:00:00Z"
   },
   "tonkombat": {
-    "supply": 345000
+    "supply": 345000,
+    "size": 15,
+    "releasedAt": "2024-09-03T17:00:00Z"
   },
   "tonosaurs": {
-    "supply": 400000
+    "supply": 400000,
+    "size": 9,
+    "releasedAt": "2024-12-17T17:00:00Z"
   },
   "tonsper": {
-    "supply": 520000
+    "supply": 520000,
+    "size": 12,
+    "releasedAt": "2024-09-03T17:00:00Z"
   },
   "tonstation": {
-    "supply": 25000
+    "supply": 25000,
+    "size": 3,
+    "releasedAt": "2025-06-25T17:00:00Z"
   },
   "tonsters": {
-    "supply": 600000
+    "supply": 600000,
+    "size": 10,
+    "releasedAt": "2025-03-01T17:00:00Z"
   },
   "turtlepower": {
-    "supply": 50000
+    "supply": 50000,
+    "size": 6,
+    "releasedAt": "2026-04-30T17:00:00Z"
   },
   "wintertales": {
-    "supply": 102000
+    "supply": 102026,
+    "size": 9,
+    "releasedAt": "2025-12-24T17:00:00Z"
   },
   "wrestlemania": {
-    "supply": 800000
+    "supply": 800000,
+    "size": 9,
+    "releasedAt": "2025-11-07T17:00:00Z"
   },
   "xcaps": {
-    "supply": 900000
+    "supply": 900000,
+    "size": 9,
+    "releasedAt": "2025-09-15T17:00:00Z"
   },
   "yupik": {
-    "supply": 5000
+    "supply": 5000,
+    "size": 6,
+    "releasedAt": "2024-09-23T17:00:00Z"
+  },
+  "zifretta": {
+    "size": 3,
+    "supply": 21337,
+    "releasedAt": "2024-12-27T17:00:00Z"
   },
   "zodiac": {
-    "supply": 30000
+    "supply": 30000,
+    "size": 12,
+    "releasedAt": "2026-05-29T17:00:00Z"
   },
   "zords": {
-    "supply": 600000
+    "supply": 600000,
+    "size": 9,
+    "releasedAt": "2025-08-03T17:00:00Z"
   }
 }
